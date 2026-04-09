@@ -1,59 +1,97 @@
-# OpenPropsDs
+# open-props-ds
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.2.
+An Angular component design system built on top of [Open Props](https://open-props.style/) and inspired by [OpenPropsUI](https://open-props-ui.netlify.app/) — a CSS-first, zero-runtime component library for Angular applications.
 
-## Development server
+> **Status:** Early development — architecture and foundations in progress.
 
-To start a local development server, run:
+## Philosophy
 
-```bash
-ng serve
-```
+- **CSS-first** — components are styled with Open Props custom properties; no CSS-in-JS, no style encapsulation hacks.
+- **Copy-paste friendly** — components are standalone and self-contained; take what you need.
+- **Accessible by default** — every component targets WCAG AA compliance and passes axe audits.
+- **Angular-native** — standalone components, signals, `OnPush` change detection, typed reactive forms.
+- **Zero opinion on your theme** — Open Props design tokens are the API; override anything.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech stack
 
-## Code scaffolding
+| Concern | Choice |
+|---|---|
+| Framework | Angular 20+ (standalone, signals) |
+| Design tokens | [Open Props](https://open-props.style/) |
+| Reference UI | [OpenPropsUI](https://open-props-ui.netlify.app/) |
+| Styles | CSS custom properties (no pre-processors required) |
+| Testing | Vitest + Testing Library |
+| Docs / showcase | Angular app in this repo (`projects/showcase`) |
+| Package manager | pnpm |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Getting started
 
 ```bash
-ng build
+pnpm install
+ng serve           # showcase app at http://localhost:4200
+ng test            # unit tests
+ng build           # build all projects
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Repo structure (planned)
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```
+open-props-ds/
+├── projects/
+│   ├── ui/           # The component library (publishable)
+│   └── showcase/     # Docs & demo app
+├── .copilot/
+│   └── mcp.json      # Repo-level MCP servers (jcodemunch + jdocmunch)
+└── ...
 ```
 
-## Running end-to-end tests
+## AI tooling (Copilot / MCP)
 
-For end-to-end (e2e) testing, run:
+This repo is configured with two MCP servers for AI-assisted development:
 
-```bash
-ng e2e
-```
+- **[jCodeMunch](https://github.com/jgravelle/jcodemunch-mcp)** — semantic code search and symbol navigation across the codebase.
+- **[jDocMunch](https://github.com/jgravelle/jdocmunch-mcp)** — section-precise documentation retrieval (Open Props docs, Angular docs, component specs).
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Both are declared in `.copilot/mcp.json` and picked up automatically by GitHub Copilot CLI.
 
-## Additional Resources
+## Things we'll need (design decisions ahead)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+See the section below for context before diving in.
+
+### 1. Monorepo library structure
+Split into `projects/ui` (publishable Angular library) and `projects/showcase` (demo app). Use `ng generate library` and `ng generate application`.
+
+### 2. Open Props integration strategy
+Decide whether to ship Open Props as a peer dependency (consumers import the CSS themselves) or to re-export a curated subset of tokens as part of the library's CSS layer.
+
+### 3. CSS architecture
+Pick a layer strategy (`@layer`) and decide on component-level encapsulation: `ViewEncapsulation.None` + scoped selectors, or shadow DOM. None + scoped is likely the right call to keep Open Props tokens flowing through naturally.
+
+### 4. Component API conventions
+Agree on input naming, slot/content projection patterns, and host element usage before building the first components.
+
+### 5. Theme / color-scheme support
+Open Props ships light and dark token sets. Decide how consumers opt in (class on `:root`, `prefers-color-scheme`, or a signal-based theme service).
+
+### 6. Accessibility testing pipeline
+Add `axe-core` (via `@axe-core/playwright` or `jest-axe`) to CI so every component is continuously audited.
+
+### 7. Documentation tooling
+Consider [Storybook](https://storybook.js.org/) or a hand-rolled Angular showcase app. Storybook has good Angular support and autodocs, but adds weight.
+
+### 8. Semantic versioning & release
+Set up [Changesets](https://github.com/changesets/changesets) or [release-it](https://github.com/release-it/release-it) before the first published version to keep the changelog clean from day one.
+
+### 9. Bundle size budget
+Set `ng build` size budgets early and enforce them in CI to prevent token/style bloat creeping in.
+
+### 10. Peer dependency matrix
+Decide minimum supported Angular version and whether to also publish a standalone CSS-only package for non-Angular consumers.
+
+## Contributing
+
+Work in progress — contributing guidelines will be added once the initial architecture is settled.
+
+## License
+
+MIT

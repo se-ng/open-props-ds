@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "jcodemunch": {
+      "type": "local",
+      "command": "/home/sander/.local/bin/jcodemunch-mcp",
+      "args": [],
+      "tools": ["*"]
+    },
+    "jdocmunch": {
+      "type": "local",
+      "command": "/home/sander/.local/bin/jdocmunch-mcp",
+      "args": [],
+      "tools": ["*"]
+    }
+  }
+}
