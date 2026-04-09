@@ -16,7 +16,7 @@ An Angular component design system built on top of [Open Props](https://open-pro
 
 | Concern | Choice |
 |---|---|
-| Framework | Angular 20+ (standalone, signals) |
+| Framework | Angular 22+ (standalone, signals) |
 | Design tokens | [Open Props](https://open-props.style/) |
 | Reference UI | [OpenPropsUI](https://open-props-ui.netlify.app/) |
 | Styles | CSS custom properties (no pre-processors required) |

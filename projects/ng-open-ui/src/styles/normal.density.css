@@ -1,0 +1,19 @@
+/**
+ * normal.density.css — DEFAULT density/shape theme
+ *
+ * Full base token set for spacing, border-radius, and sizing.
+ * All other density themes only contain props that diverge from these.
+ *
+ * TODO: map to full Open Props size/radius scale.
+ */
+
+@container style(--se-selected-density: normal) {
+  :root {
+    --se-radius-1: var(--radius-2);
+    --se-radius-2: var(--radius-3);
+    --se-space-1: var(--size-2);
+    --se-space-2: var(--size-3);
+    --se-space-3: var(--size-5);
+    --se-space-4: var(--size-7);
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../ng-open-ui/src/styles/preset.css';
+@import '../../ng-open-ui/src/styles/light.theme.css';
+@import '../../ng-open-ui/src/styles/compact.density.css';
+@import '../../ng-open-ui/src/styles/spacious.density.css';
+
+/* Showcase layout */
+body {
+  margin: 0;
+  padding: var(--se-space-2, 1rem);
+  background-color: var(--se-surface-1, canvas);
+  color: var(--se-text-1, canvastext);
+  font-family: var(--font-sans, system-ui, sans-serif);
+}
+
+header {
+  padding-block: var(--se-space-1, 0.5rem);
+  margin-block-end: var(--se-space-3, 2rem);
+  border-block-end: 1px solid var(--se-surface-3, currentcolor);
+}
+
+section {
+  margin-block: var(--se-space-4, 3rem);
+}
+
+section > * + * {
+  margin-block-start: var(--se-space-1, 0.5rem);
+}

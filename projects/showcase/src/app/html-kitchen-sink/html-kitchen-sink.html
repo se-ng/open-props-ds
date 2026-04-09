@@ -1,0 +1,216 @@
+<article>
+  <h1>HTML Kitchen Sink</h1>
+  <p>Default styling for all native HTML elements via <code>preset.css</code>.</p>
+</article>
+
+<!-- Typography -->
+<section>
+  <h2>Headings</h2>
+  <h1>Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+  <h6>Heading 6</h6>
+</section>
+
+<section>
+  <h2>Inline text</h2>
+  <p>Regular paragraph with <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <s>strikethrough</s>, <code>inline code</code>, <kbd>Ctrl+C</kbd>, <mark>highlighted</mark>, <abbr title="Abbreviation">abbr</abbr>, <sup>sup</sup> and <sub>sub</sub>.</p>
+  <p><small>Small text</small> and a <a href="#">hyperlink</a>.</p>
+  <blockquote>
+    <p>A blockquote with some longer text to see how it wraps and looks in context.</p>
+    <cite>— Some Person</cite>
+  </blockquote>
+  <pre><code>// Preformatted code block
+function hello(name: string): string &#123;
+  return `Hello, $&#123;name&#125;!`;
+&#125;</code></pre>
+</section>
+
+<!-- Lists -->
+<section>
+  <h2>Lists</h2>
+  <ul>
+    <li>Unordered item one</li>
+    <li>Unordered item two
+      <ul>
+        <li>Nested item</li>
+      </ul>
+    </li>
+    <li>Unordered item three</li>
+  </ul>
+  <ol>
+    <li>Ordered item one</li>
+    <li>Ordered item two</li>
+    <li>Ordered item three</li>
+  </ol>
+  <dl>
+    <dt>Term</dt>
+    <dd>Definition of the term above.</dd>
+    <dt>Another term</dt>
+    <dd>Its definition.</dd>
+  </dl>
+</section>
+
+<!-- Forms -->
+<section>
+  <h2>Form elements</h2>
+  <form>
+    <fieldset>
+      <legend>Text inputs</legend>
+      <label for="text-input">Text</label>
+      <input id="text-input" type="text" placeholder="Placeholder text" />
+
+      <label for="email-input">Email</label>
+      <input id="email-input" type="email" placeholder="you&#64;example.com" />
+
+      <label for="password-input">Password</label>
+      <input id="password-input" type="password" placeholder="••••••••" />
+
+      <label for="search-input">Search</label>
+      <input id="search-input" type="search" placeholder="Search…" />
+
+      <label for="number-input">Number</label>
+      <input id="number-input" type="number" placeholder="0" />
+
+      <label for="tel-input">Tel</label>
+      <input id="tel-input" type="tel" placeholder="+1 555 000 0000" />
+
+      <label for="url-input">URL</label>
+      <input id="url-input" type="url" placeholder="https://example.com" />
+
+      <label for="textarea">Textarea</label>
+      <textarea id="textarea" rows="4" placeholder="Write something…"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <legend>Selection</legend>
+      <label for="select">Select</label>
+      <select id="select">
+        <option>Option one</option>
+        <option>Option two</option>
+        <option>Option three</option>
+      </select>
+
+      <label for="multi-select">Multi-select</label>
+      <select id="multi-select" multiple size="4">
+        <option>Alpha</option>
+        <option>Beta</option>
+        <option>Gamma</option>
+        <option>Delta</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Pickers</legend>
+      <label for="date-input">Date</label>
+      <input id="date-input" type="date" />
+
+      <label for="time-input">Time</label>
+      <input id="time-input" type="time" />
+
+      <label for="color-input">Color</label>
+      <input id="color-input" type="color" value="#3b82f6" />
+
+      <label for="range-input">Range</label>
+      <input id="range-input" type="range" min="0" max="100" />
+
+      <label for="file-input">File</label>
+      <input id="file-input" type="file" />
+    </fieldset>
+
+    <fieldset>
+      <legend>Checkbox &amp; Radio</legend>
+      <label><input type="checkbox" checked /> Checked checkbox</label>
+      <label><input type="checkbox" /> Unchecked checkbox</label>
+      <label><input type="checkbox" disabled /> Disabled checkbox</label>
+
+      <label><input type="radio" name="radio-group" checked /> Radio A</label>
+      <label><input type="radio" name="radio-group" /> Radio B</label>
+      <label><input type="radio" name="radio-group" disabled /> Radio C (disabled)</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Buttons</legend>
+      <button type="button">Default button</button>
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+      <button type="button" disabled>Disabled</button>
+      <input type="button" value="Input button" />
+    </fieldset>
+  </form>
+</section>
+
+<!-- Tables -->
+<section>
+  <h2>Table</h2>
+  <table>
+    <caption>Sample data table</caption>
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alice</td>
+        <td>Engineer</td>
+        <td>Active</td>
+      </tr>
+      <tr>
+        <td>Bob</td>
+        <td>Designer</td>
+        <td>Away</td>
+      </tr>
+      <tr>
+        <td>Carol</td>
+        <td>Manager</td>
+        <td>Active</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">3 team members</td>
+      </tr>
+    </tfoot>
+  </table>
+</section>
+
+<!-- Media & embeds -->
+<section>
+  <h2>Media</h2>
+  <figure>
+    <img src="https://picsum.photos/seed/kitchen/800/400" width="800" height="400" alt="Placeholder landscape image" />
+    <figcaption>A figure caption below the image.</figcaption>
+  </figure>
+</section>
+
+<!-- Details / Summary -->
+<section>
+  <h2>Interactive</h2>
+  <details>
+    <summary>Expandable details element</summary>
+    <p>Content inside a details/summary pair. Collapsed by default.</p>
+  </details>
+
+  <dialog open aria-label="Sample dialog">
+    <p>This is a <code>&lt;dialog&gt;</code> element rendered inline.</p>
+  </dialog>
+
+  <progress value="70" max="100">70%</progress>
+  <meter value="6" min="0" max="10" low="3" high="8" optimum="9">6 out of 10</meter>
+</section>
+
+<!-- Semantic / structural -->
+<section>
+  <h2>Semantic elements</h2>
+  <address>
+    123 Example Street<br />
+    Springfield, ST 00000
+  </address>
+  <hr />
+  <p>Above is an <code>&lt;hr&gt;</code> horizontal rule.</p>
+</section>

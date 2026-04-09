@@ -1,0 +1,16 @@
+/**
+ * compact.density.css — divergent props from normal (default) density
+ *
+ * Only contains values that differ from normal.density.css.
+ */
+
+@container style(--se-selected-density: compact) {
+  :root {
+    --se-radius-1: var(--radius-1);
+    --se-radius-2: var(--radius-2);
+    --se-space-1: var(--size-1);
+    --se-space-2: var(--size-2);
+    --se-space-3: var(--size-3);
+    --se-space-4: var(--size-5);
+  }
+}

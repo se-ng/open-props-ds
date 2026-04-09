@@ -1,0 +1,14 @@
+/**
+ * spacious.density.css — divergent props from normal (default) density
+ */
+
+@container style(--se-selected-density: spacious) {
+  :root {
+    --se-radius-1: var(--radius-3);
+    --se-radius-2: var(--radius-4);
+    --se-space-1: var(--size-3);
+    --se-space-2: var(--size-5);
+    --se-space-3: var(--size-7);
+    --se-space-4: var(--size-9);
+  }
+}

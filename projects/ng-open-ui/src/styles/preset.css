@@ -1,0 +1,30 @@
+/**
+ * preset.css
+ *
+ * Import this file first, then import the theme files you want to support.
+ * By default dark color scheme and normal density are active.
+ *
+ * Recommended consumer setup:
+ *   @import '@se-ng/ng-open-ui/preset.css';
+ *   @import '@se-ng/ng-open-ui/dark.theme.css';   (included here by default)
+ *   @import '@se-ng/ng-open-ui/normal.density.css'; (included here by default)
+ *   @import '@se-ng/ng-open-ui/light.theme.css';  (optional, if you support it)
+ */
+
+@import 'open-props/style';
+
+@import './dark.theme.css';
+@import './normal.density.css';
+
+:root {
+  /* Default: dark. OS preference can override via the @media below.
+     Angular ThemeService overrides via inline style (beats @media). */
+  --se-selected-scheme: dark;
+  --se-selected-density: normal;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --se-selected-scheme: light;
+  }
+}
