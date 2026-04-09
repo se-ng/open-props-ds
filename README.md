@@ -33,6 +33,8 @@ ng test            # unit tests
 ng build           # build all projects
 ```
 
+> All packages are pinned to exact versions (`save-exact=true`). Run `pnpm install` after any version change.
+
 ## Repo structure (planned)
 
 ```
@@ -73,18 +75,52 @@ Open Props is a **peer dependency** — consumers import it themselves. The libr
 - **Angular `input()` signals only when JS/state is actually needed**; otherwise plain HTML attributes
 - Content projection via `<ng-content>` where needed
 
-### 5. Theme & color-scheme
-`preset.css` ships multiple themes (light, dark, and color variants). The prime switch is a single CSS custom property:
+### 5. Theme system
+
+Two independent theme axes, each controlled by a CSS custom property:
+
+#### Color/font themes → `--se-selected-scheme`
 
 ```css
-:root { --se-selected-scheme: light; }
+/* preset.css sets the defaults */
+:root { --se-selected-scheme: dark; } /* dark is the default */
 
-@media (prefers-color-scheme: dark) {
-  :root { --se-selected-scheme: dark; }
+@media (prefers-color-scheme: light) {
+  :root { --se-selected-scheme: light; }
 }
 ```
 
-CSS `@container style()` queries respond to this property. The Angular **theme service** overrides it via `document.documentElement.style.setProperty()` — inline styles beat `@media`, so removing the override restores the OS preference automatically.
+Each theme lives in its own file. **`dark.theme.css` is the full base**; other files only contain props that diverge from it:
+
+```
+styles/
+  preset.css              ← import this always; sets defaults
+  dark.theme.css          ← DEFAULT: full color + font token set
+  light.theme.css         ← only props divergent from dark
+  woodlike.theme.css      ← only props divergent from dark
+  (add more as needed)
+```
+
+#### Density/shape themes → `--se-selected-density`
+
+Controls spacing, border-radius, sizing — independent from color themes:
+
+```
+styles/
+  normal.density.css      ← DEFAULT: full spacing + radius token set
+  compact.density.css     ← only divergent props
+  spacious.density.css    ← only divergent props
+  mobile.density.css      ← only divergent props
+```
+
+Consumers import `preset.css` always, then only the extra theme files they need. Unused themes are never loaded.
+
+CSS `@container style()` queries react to both properties. The Angular **theme service** overrides them via `document.documentElement.style.setProperty()` — inline styles beat `@media`, so removing the override restores OS preference automatically. The two axes are set independently:
+
+```ts
+themeService.setScheme('light');
+themeService.setDensity('compact');
+```
 
 ### 6. Accessibility
 Every component targets **WCAG AA**. `axe-core` runs in every Vitest unit test. Native element hosts give correct semantics for free.
