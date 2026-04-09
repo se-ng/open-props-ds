@@ -54,39 +54,55 @@ This repo is configured with two MCP servers for AI-assisted development:
 
 Both are declared in `.copilot/mcp.json` and picked up automatically by GitHub Copilot CLI.
 
-## Things we'll need (design decisions ahead)
+## Architecture decisions
 
-See the section below for context before diving in.
+### 1. Monorepo structure
+- `projects/ng-open-ui` — publishable Angular library (`@se-ng/ng-open-ui`)
+- `projects/showcase` — demo/docs Angular app
 
-### 1. Monorepo library structure
-Split into `projects/ui` (publishable Angular library) and `projects/showcase` (demo app). Use `ng generate library` and `ng generate application`.
-
-### 2. Open Props integration strategy
-Decide whether to ship Open Props as a peer dependency (consumers import the CSS themselves) or to re-export a curated subset of tokens as part of the library's CSS layer.
+### 2. Open Props integration
+Open Props is a **peer dependency** — consumers import it themselves. The library ships a `preset.css` (reset + theme variants) as an optional but recommended starting point.
 
 ### 3. CSS architecture
-Pick a layer strategy (`@layer`) and decide on component-level encapsulation: `ViewEncapsulation.None` + scoped selectors, or shadow DOM. None + scoped is likely the right call to keep Open Props tokens flowing through naturally.
+**`ViewEncapsulation.Emulated`** (Angular default) on all components. Custom properties pierce Angular's attribute scoping naturally, so Open Props tokens flow through without friction. No Shadow DOM, no `ViewEncapsulation.None`.
 
 ### 4. Component API conventions
-Agree on input naming, slot/content projection patterns, and host element usage before building the first components.
+- **Native HTML elements as host selectors**: `button[se]`, `input[se]`, `a[se]`, etc.
+- `se-` prefix only for elements with no native semantic equivalent (e.g. `<se-card>`)
+- Styling driven by **CSS attribute selectors** — no classnames
+- **Angular `input()` signals only when JS/state is actually needed**; otherwise plain HTML attributes
+- Content projection via `<ng-content>` where needed
 
-### 5. Theme / color-scheme support
-Open Props ships light and dark token sets. Decide how consumers opt in (class on `:root`, `prefers-color-scheme`, or a signal-based theme service).
+### 5. Theme & color-scheme
+`preset.css` ships multiple themes (light, dark, and color variants). The prime switch is a single CSS custom property:
 
-### 6. Accessibility testing pipeline
-Add `axe-core` (via `@axe-core/playwright` or `jest-axe`) to CI so every component is continuously audited.
+```css
+:root { --se-selected-scheme: light; }
 
-### 7. Documentation tooling
-Consider [Storybook](https://storybook.js.org/) or a hand-rolled Angular showcase app. Storybook has good Angular support and autodocs, but adds weight.
+@media (prefers-color-scheme: dark) {
+  :root { --se-selected-scheme: dark; }
+}
+```
 
-### 8. Semantic versioning & release
-Set up [Changesets](https://github.com/changesets/changesets) or [release-it](https://github.com/release-it/release-it) before the first published version to keep the changelog clean from day one.
+CSS `@container style()` queries respond to this property. The Angular **theme service** overrides it via `document.documentElement.style.setProperty()` — inline styles beat `@media`, so removing the override restores the OS preference automatically.
 
-### 9. Bundle size budget
-Set `ng build` size budgets early and enforce them in CI to prevent token/style bloat creeping in.
+### 6. Accessibility
+Every component targets **WCAG AA**. `axe-core` runs in every Vitest unit test. Native element hosts give correct semantics for free.
+
+### 7. Documentation
+**Showcase Angular app** in `projects/showcase`. Storybook deferred until it officially supports Angular 22+.
+
+### 8. Release tooling
+- **`semantic-release`** — automated versioning + changelog from commit messages
+- **`commitlint`** + **`husky`** — enforces [Conventional Commits](https://www.conventionalcommits.org/) at the git hook level; non-conforming commits are rejected
+
+### 9. Bundle size budgets
+CI fails if any single component's CSS + JS exceeds **5 kb gzipped**. Configured in `angular.json` and enforced in GitHub Actions.
 
 ### 10. Peer dependency matrix
-Decide minimum supported Angular version and whether to also publish a standalone CSS-only package for non-Angular consumers.
+- **Angular 22+** only — tracks latest, no legacy burden
+- **Open Props** — peer dependency
+- Angular-only; no CSS-only package planned
 
 ## Contributing
 
