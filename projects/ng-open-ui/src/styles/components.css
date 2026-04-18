@@ -1,0 +1,8 @@
+/* Component recipe layer.
+ *
+ * Components keep their CSS files next to implementation in src/lib/**,
+ * but styles are imported globally from this file.
+ * Layer priority is established by preset.css — no @layer declaration needed here.
+ */
+@import '../lib/button/button.css' layer(components);
+@import '../lib/panel/panel.css' layer(components);

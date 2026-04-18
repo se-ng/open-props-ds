@@ -3,6 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <title>Showcase</title>
+    <!--
+      Anti-FOUC script: reads persisted theme preferences from localStorage and
+      sets data attributes on <html> before the first paint. Must be the first
+      thing in <head> — inline and synchronous.
+
+      This is a library: consumers must add this snippet to their own index.html.
+      See ThemeService JSDoc for the canonical copy.
+    -->
+    <script>
+      (function () {
+        var s = localStorage.getItem('se-scheme') ||
+          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.scheme = s;
+        var d = localStorage.getItem('se-density');
+        if (d) document.documentElement.dataset.density = d;
+      })();
+    </script>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />

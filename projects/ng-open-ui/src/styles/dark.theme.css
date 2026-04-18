@@ -1,24 +1,19 @@
 /**
- * dark.theme.css — DEFAULT color/font theme
+ * dark.theme.css — explicit dark scheme overrides.
  *
- * This is the full base token set. All other color themes only contain
- * props that diverge from these values.
+ * The dark palette is defined in base.theme.css (always active via @layer base).
+ * This file exists for completeness and any future dark-specific deviations that
+ * should NOT affect the base fallback.
  *
- * TODO: populate with Open Props color scale + font tokens for dark scheme.
- * Reference: https://codepen.io/argyleink/pen/XWaYyWe
+ * @layer scheme — wins over @layer base regardless of import order.
+ *
+ * Active when: data-scheme="dark" on <html>.
  */
 
-@container style(--se-selected-scheme: dark) {
-  :root {
+@layer scheme {
+  :root[data-scheme="dark"] {
     color-scheme: dark;
-
-    /* Placeholder tokens — replace with full Open Props dark scale */
-    --se-surface-1: var(--gray-9);
-    --se-surface-2: var(--gray-8);
-    --se-surface-3: var(--gray-7);
-    --se-text-1: var(--gray-0);
-    --se-text-2: var(--gray-3);
-    --se-link: var(--blue-3);
-    --se-brand: var(--violet-5);
   }
+
+  /* No token overrides — dark values are the base defaults in base.theme.css. */
 }

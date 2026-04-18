@@ -1,6 +1,5 @@
 {
-  // For more information, visit: https://angular.dev/ai/mcp
-  "servers": {
+  "mcpServers": {
     "angular-cli": {
       "command": "npx",
       "args": [
@@ -13,19 +12,17 @@
         "devserver",
         "--experimental-tool",
         "modernize",
-        "--experimental-tool"
+        "--experimental-tool",
+        "test"
       ]
     },
-
     "jdocmunch": {
-      "command": "uvx",
-      "args": ["jdocmunch-mcp"],
-      "env": {}
+      "command": "/home/sander/.local/bin/jdocmunch-mcp",
+      "args": []
     },
     "jcodemunch": {
-      "command": "uvx",
-      "args": ["jcodemunch-mcp"],
-      "env": {}
+      "command": "/home/sander/.local/bin/jcodemunch-mcp",
+      "args": []
     }
   }
 }

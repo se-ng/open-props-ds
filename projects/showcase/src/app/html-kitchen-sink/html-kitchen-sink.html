@@ -59,76 +59,127 @@ function hello(name: string): string &#123;
   <form>
     <fieldset>
       <legend>Text inputs</legend>
-      <label for="text-input">Text</label>
-      <input id="text-input" type="text" placeholder="Placeholder text" />
+      <label for="text-input">
+        <span>Text</span>
+        <input id="text-input" type="text" placeholder="Placeholder text" />
+      </label>
 
-      <label for="email-input">Email</label>
-      <input id="email-input" type="email" placeholder="you&#64;example.com" />
+      <label for="email-input">
+        <span>Email</span>
+        <input id="email-input" type="email" placeholder="you&#64;example.com" />
+      </label>
 
-      <label for="password-input">Password</label>
-      <input id="password-input" type="password" placeholder="••••••••" />
+      <label for="password-input">
+        <span>Password</span>
+        <input id="password-input" type="password" placeholder="••••••••" />
+      </label>
 
-      <label for="search-input">Search</label>
-      <input id="search-input" type="search" placeholder="Search…" />
+      <label for="search-input">
+        <span>Search</span>
+        <input id="search-input" type="search" placeholder="Search…" />
+      </label>
 
-      <label for="number-input">Number</label>
-      <input id="number-input" type="number" placeholder="0" />
+      <label for="number-input">
+        <span>Number</span>
+        <input id="number-input" type="number" placeholder="0" />
+      </label>
 
-      <label for="tel-input">Tel</label>
-      <input id="tel-input" type="tel" placeholder="+1 555 000 0000" />
+      <label for="tel-input">
+        <span>Tel</span>
+        <input id="tel-input" type="tel" placeholder="+1 555 000 0000" />
+      </label>
 
-      <label for="url-input">URL</label>
-      <input id="url-input" type="url" placeholder="https://example.com" />
+      <label for="url-input">
+        <span>URL</span>
+        <input id="url-input" type="url" placeholder="https://example.com" />
+      </label>
 
-      <label for="textarea">Textarea</label>
-      <textarea id="textarea" rows="4" placeholder="Write something…"></textarea>
+      <label for="textarea">
+        <span>Textarea</span>
+        <textarea id="textarea" rows="4" placeholder="Write something…"></textarea>
+      </label>
     </fieldset>
 
     <fieldset>
       <legend>Selection</legend>
-      <label for="select">Select</label>
-      <select id="select">
-        <option>Option one</option>
-        <option>Option two</option>
-        <option>Option three</option>
-      </select>
+      <label for="select">
+        <span>Select</span>
+        <select id="select">
+          <option>Option one</option>
+          <option>Option two</option>
+          <option>Option three</option>
+        </select>
+      </label>
 
-      <label for="multi-select">Multi-select</label>
-      <select id="multi-select" multiple size="4">
-        <option>Alpha</option>
-        <option>Beta</option>
-        <option>Gamma</option>
-        <option>Delta</option>
-      </select>
+      <label for="multi-select">
+        <span>Multi-select</span>
+        <select id="multi-select" multiple size="4">
+          <option>Alpha</option>
+          <option>Beta</option>
+          <option>Gamma</option>
+          <option>Delta</option>
+        </select>
+      </label>
     </fieldset>
 
     <fieldset>
       <legend>Pickers</legend>
-      <label for="date-input">Date</label>
-      <input id="date-input" type="date" />
+      <label for="date-input">
+        <span>Date</span>
+        <input id="date-input" type="date" />
+      </label>
 
-      <label for="time-input">Time</label>
-      <input id="time-input" type="time" />
+      <label for="time-input">
+        <span>Time</span>
+        <input id="time-input" type="time" />
+      </label>
 
-      <label for="color-input">Color</label>
-      <input id="color-input" type="color" value="#3b82f6" />
+      <label for="color-input">
+        <span>Color</span>
+        <input id="color-input" type="color" value="#3b82f6" />
+      </label>
 
-      <label for="range-input">Range</label>
-      <input id="range-input" type="range" min="0" max="100" />
+      <label for="range-input">
+        <span>Range</span>
+        <input id="range-input" type="range" min="0" max="100" />
+      </label>
 
-      <label for="file-input">File</label>
-      <input id="file-input" type="file" />
+      <label for="file-input">
+        <span>File</span>
+        <input id="file-input" type="file" />
+      </label>
     </fieldset>
 
     <fieldset>
-      <legend>Checkbox &amp; Radio</legend>
-      <label><input type="checkbox" checked /> Checked checkbox</label>
-      <label><input type="checkbox" /> Unchecked checkbox</label>
-      <label><input type="checkbox" disabled /> Disabled checkbox</label>
+      <legend>Checkboxes</legend>
+      <label for="checkbox-checked">
+        <input id="checkbox-checked" type="checkbox" checked />
+        <span>Checked checkbox</span>
+      </label>
+      <label for="checkbox-unchecked">
+        <input id="checkbox-unchecked" type="checkbox" />
+        <span>Unchecked checkbox</span>
+      </label>
+      <label for="checkbox-disabled">
+        <input id="checkbox-disabled" type="checkbox" disabled />
+        <span>Disabled checkbox</span>
+      </label>
+    </fieldset>
 
-      <label><input type="radio" name="radio-group" checked /> Radio A</label>
-      <label><input type="radio" name="radio-group" /> Radio B</label>
-      <label><input type="radio" name="radio-group" disabled /> Radio C (disabled)</label>
+    <fieldset>
+      <legend>Radio buttons</legend>
+      <label for="radio-a">
+        <input id="radio-a" type="radio" name="radio-group" checked />
+        <span>Radio A</span>
+      </label>
+      <label for="radio-b">
+        <input id="radio-b" type="radio" name="radio-group" />
+        <span>Radio B</span>
+      </label>
+      <label for="radio-c">
+        <input id="radio-c" type="radio" name="radio-group" disabled />
+        <span>Radio C (disabled)</span>
+      </label>
     </fieldset>
 
     <fieldset>

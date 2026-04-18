@@ -1,14 +1,28 @@
 /**
- * spacious.density.css — divergent props from normal (default) density
+ * spacious.density.css — spacious density overrides.
+ *
+ * Overrides only the tokens that differ from the normal base (base.density.css).
+ *
+ * @layer density — wins over @layer base regardless of import order.
+ *
+ * Active when: data-density="spacious" on <html>.
  */
 
-@container style(--se-selected-density: spacious) {
-  :root {
-    --se-radius-1: var(--radius-3);
-    --se-radius-2: var(--radius-4);
-    --se-space-1: var(--size-3);
-    --se-space-2: var(--size-5);
-    --se-space-3: var(--size-7);
-    --se-space-4: var(--size-9);
+@layer density {
+  :root[data-density="spacious"] {
+    /* ── Semantic spacing tokens ─────────────────────────────────────────── */
+    --space-control-inline: var(--size-3);
+    --space-control-block: var(--size-2);
+    --space-gap-inline: var(--size-3);
+    --space-gap-block: var(--size-3);
+    --space-inset-inline: var(--size-5);
+    --space-inset-block: var(--size-5);
+    --space-cluster: var(--size-5);
+    --space-stack: var(--size-7);
+    --space-section: var(--size-9);
+
+    /* ── Semantic radius tokens ──────────────────────────────────────────── */
+    --radius-control: var(--radius-3);
+    --radius-surface: var(--radius-4);
   }
 }

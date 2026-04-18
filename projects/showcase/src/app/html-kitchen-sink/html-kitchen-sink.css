@@ -1,0 +1,7 @@
+section {
+	margin-block: var(--space-section, 3rem);
+}
+
+section > * + * {
+	margin-block-start: var(--space-gap-block, 0.5rem);
+}

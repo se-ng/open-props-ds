@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "check:component-styles": "node scripts/check-global-component-styles.mjs",
+    "test": "pnpm check:component-styles && ng test",
     "prepare": "husky"
   },
   "private": true,

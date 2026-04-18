@@ -11,6 +11,17 @@
       "command": "/home/sander/.local/bin/jdocmunch-mcp",
       "args": [],
       "tools": ["*"]
+    },
+    "angular-cli": {
+      "type": "local",
+      "command": "/home/sander/Documenten/oss/open-props-ds/node_modules/.bin/ng",
+      "args": [
+        "mcp",
+        "--experimental-tool", "build",
+        "--experimental-tool", "devserver",
+        "--experimental-tool", "modernize",
+        "--experimental-tool", "test"
+      ]
     }
   }
 }

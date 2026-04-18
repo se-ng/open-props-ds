@@ -1,0 +1,117 @@
+/* ── Normal (default) — medium-emphasis, neutral fill ─────────────────── */
+button[se] {
+  --button-background: var(--surface-2);
+  --button-background-hover: var(--surface-3);
+  --button-background-active: var(--surface-4);
+  --button-border: var(--border-size-1) solid var(--stroke-default);
+  --button-border-hover: var(--border-size-1) solid var(--stroke-strong);
+  --button-color: var(--text-1);
+  --button-padding-inline: var(--space-control-inline);
+  --button-padding-block: var(--space-control-block);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-gap-inline);
+  border: var(--button-border);
+  border-radius: var(--radius-control);
+  padding-inline: var(--button-padding-inline);
+  padding-block: var(--button-padding-block);
+  background: var(--button-background);
+  color: var(--button-color);
+  font-weight: var(--font-weight-6);
+  line-height: var(--font-lineheight-1);
+  text-align: center;
+  text-decoration: none;
+}
+
+button[se]:where(:enabled:hover) {
+  background: var(--button-background-hover);
+  border: var(--button-border-hover);
+}
+
+button[se]:where(:enabled:active) {
+  background: var(--button-background-active);
+}
+
+button[se]:where(:focus-visible) {
+  outline: var(--border-size-2) solid var(--link);
+  outline-offset: 2px;
+}
+
+/* ── Primary intent — high-emphasis, brand fill ────────────────────────── */
+button[se][intent='primary'] {
+  --button-background: var(--brand);
+  --button-background-hover: color-mix(in oklab, var(--brand) 82%, var(--surface-4));
+  --button-background-active: color-mix(in oklab, var(--brand) 68%, var(--surface-4));
+  --button-border: var(--border-size-1) solid color-mix(in oklab, var(--brand) 78%, var(--surface-4));
+  --button-border-hover: var(--border-size-1) solid color-mix(in oklab, var(--brand) 60%, var(--surface-4));
+  --button-color: var(--brand-text);
+}
+
+/* ── Secondary intent — medium-low emphasis, outlined ──────────────────── */
+button[se][intent='secondary'] {
+  --button-background: transparent;
+  --button-background-hover: var(--surface-1);
+  --button-background-active: var(--surface-2);
+  --button-border: var(--border-size-1) solid var(--stroke-default);
+  --button-border-hover: var(--border-size-1) solid var(--stroke-strong);
+  --button-color: var(--text-1);
+}
+
+/* ── Quiet intent — low-emphasis, ghost ────────────────────────────────── */
+button[se][intent='quiet'] {
+  --button-background: color-mix(in oklab, var(--surface-2) 42%, transparent);
+  --button-background-hover: var(--surface-2);
+  --button-background-active: var(--surface-3);
+  --button-border: var(--border-size-1) solid color-mix(in oklab, var(--stroke-default) 35%, transparent);
+  --button-border-hover: var(--border-size-1) solid var(--stroke-default);
+  --button-color: var(--text-1);
+}
+
+/* ── Danger intent — destructive action styling ────────────────────────── */
+button[se][intent='danger'] {
+  --button-background: var(--surface-warning);
+  --button-background-hover: color-mix(in oklab, var(--surface-warning) 75%, var(--text-warning));
+  --button-background-active: color-mix(in oklab, var(--surface-warning) 55%, var(--text-warning));
+  --button-border: var(--border-size-1) solid color-mix(in oklab, var(--text-warning) 25%, transparent);
+  --button-border-hover: var(--border-size-1) solid color-mix(in oklab, var(--text-warning) 45%, transparent);
+  --button-color: var(--text-warning);
+}
+
+/* ── Disabled — not-interactive, applies to all intents ───────────────── */
+button[se]:where(:disabled, [aria-disabled='true']) {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+button[se][aria-disabled='true'] {
+  pointer-events: none;
+}
+
+/* ── Round icon-action shape ───────────────────────────────────────────── */
+button[se][shape='round'] {
+  --button-round-size: 2.75rem;
+  --button-icon-size: 1.1rem;
+
+  inline-size: var(--button-round-size);
+  block-size: var(--button-round-size);
+  padding: 0;
+  border-radius: var(--radius-round);
+  flex: none;
+}
+
+button[se][shape='round'][size='sm'] {
+  --button-round-size: 2.5rem;
+  --button-icon-size: 1rem;
+}
+
+button[se][shape='round'] > svg {
+  inline-size: var(--button-icon-size);
+  block-size: var(--button-icon-size);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}

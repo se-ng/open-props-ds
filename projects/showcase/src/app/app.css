@@ -1,0 +1,37 @@
+:host > header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--base-background, var(--surface-1));
+  padding-block: var(--space-gap-block, 0.5rem);
+  margin-block-end: var(--space-stack, 2rem);
+  border-block-end: 1px solid var(--surface-3);
+}
+
+nav {
+  display: flex;
+  gap: var(--space-gap-inline, 0.75rem);
+  flex-wrap: wrap;
+}
+
+.theme-switcher {
+  display: flex;
+  gap: var(--space-cluster, 1rem);
+  margin-block-start: var(--space-gap-block, 0.5rem);
+}
+
+.theme-switcher fieldset {
+  border: 1px solid var(--surface-3, currentcolor);
+  border-radius: var(--radius-control, 4px);
+  display: flex;
+  gap: var(--space-gap-inline, 0.5rem);
+  align-items: center;
+  padding: var(--space-gap-block, 0.5rem);
+}
+
+.theme-switcher label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+}

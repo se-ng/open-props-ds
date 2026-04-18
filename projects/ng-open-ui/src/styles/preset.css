@@ -1,30 +1,43 @@
 /**
  * preset.css
  *
- * Import this file first, then import the theme files you want to support.
- * By default dark color scheme and normal density are active.
+ * Import this file first, then import any additional scheme/density files you want.
+ *
+ * Theme activation is driven by data attributes on <html>:
+ *   data-scheme="dark"      → dark base (always active; dark is the default)
+ *   data-scheme="light"     → light.theme.css tokens
+ *   data-scheme="woodlike"  → woodlike.theme.css tokens
+ *   data-density="normal"   → normal density base (always active; normal is the default)
+ *   data-density="compact"  → compact.density.css tokens
+ *   data-density="spacious" → spacious.density.css tokens
+ *
+ * ThemeService sets these attributes. Without JS the dark/normal base tokens apply
+ * immediately — no flash, no attribute needed.
  *
  * Recommended consumer setup:
- *   @import '@se-ng/ng-open-ui/preset.css';
- *   @import '@se-ng/ng-open-ui/dark.theme.css';   (included here by default)
- *   @import '@se-ng/ng-open-ui/normal.density.css'; (included here by default)
- *   @import '@se-ng/ng-open-ui/light.theme.css';  (optional, if you support it)
+ *   @import '@se-ng/ng-open-ui/preset.css';           (always)
+ *   (includes component style recipes via components.css)
+ *   @import '@se-ng/ng-open-ui/light.theme.css';      (optional — if supporting light)
+ *   @import '@se-ng/ng-open-ui/woodlike.theme.css';   (optional — if supporting woodlike)
+ *   @import '@se-ng/ng-open-ui/compact.density.css';  (optional)
+ *   @import '@se-ng/ng-open-ui/spacious.density.css'; (optional)
+ *
+ * Cascade layer order: reset → base → scheme → density → components
+ * This ensures theme overrides always win over base defaults, regardless of
+ * the order in which optional files are imported (enabling safe lazy loading).
+ * The reset layer is always registered but only populated if you import reset.css.
+ *
+ * IMPORTANT: the @layer order declaration must come BEFORE all @imports so that
+ * the layer priority is established before any imported file self-registers a layer.
  */
 
+/* Establish cascade layer priority order FIRST.
+ * @layer statements are permitted before @import (CSS Cascading L5).
+ * This must run before any imported file can self-register a layer name,
+ * otherwise the first-registered layer gets the lowest priority — not what we want. */
+@layer reset, base, scheme, density, components;
+
 @import 'open-props/style';
-
-@import './dark.theme.css';
-@import './normal.density.css';
-
-:root {
-  /* Default: dark. OS preference can override via the @media below.
-     Angular ThemeService overrides via inline style (beats @media). */
-  --se-selected-scheme: dark;
-  --se-selected-density: normal;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --se-selected-scheme: light;
-  }
-}
+@import './base.theme.css';
+@import './base.density.css';
+@import './components.css';

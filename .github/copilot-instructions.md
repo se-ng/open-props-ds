@@ -53,3 +53,18 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## Repo-local AI Skills
+
+When working on design-system architecture in this repo, read the repo-local skills first:
+
+- `.copilot/skills/open-props-guidance/SKILL.md` for policy and decision-making guidance
+- `.copilot/skills/open-props-consistency/SKILL.md` for review and drift-checking
+
+Use them when changing or reviewing:
+
+- `reset.css`
+- theme token files
+- density token files
+- semantic token architecture
+- table, stroke, and surface fallback chains

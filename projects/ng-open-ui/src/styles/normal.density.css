@@ -1,19 +1,14 @@
 /**
- * normal.density.css — DEFAULT density/shape theme
+ * normal.density.css — explicit normal density overrides.
  *
- * Full base token set for spacing, border-radius, and sizing.
- * All other density themes only contain props that diverge from these.
+ * Normal density values are defined in base.density.css (always active via @layer base).
+ * This file exists for completeness and any future normal-specific deviations.
  *
- * TODO: map to full Open Props size/radius scale.
+ * @layer density — wins over @layer base regardless of import order.
+ *
+ * Active when: data-density="normal" on <html>.
  */
 
-@container style(--se-selected-density: normal) {
-  :root {
-    --se-radius-1: var(--radius-2);
-    --se-radius-2: var(--radius-3);
-    --se-space-1: var(--size-2);
-    --se-space-2: var(--size-3);
-    --se-space-3: var(--size-5);
-    --se-space-4: var(--size-7);
-  }
+@layer density {
+  /* No token overrides — normal values are the base defaults in base.density.css. */
 }

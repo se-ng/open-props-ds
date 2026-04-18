@@ -1,22 +1,29 @@
 /**
- * light.theme.css — light color scheme overrides.
+ * base.theme.css — canonical color token definitions, dark values as defaults.
  *
- * Overrides only the tokens that differ from the dark base (base.theme.css).
+ * Always imported via preset.css. Every color token the design system uses must
+ * be defined here. Theme override files (light.theme.css, woodlike.theme.css, …)
+ * only redefine the tokens they change; the rest fall back to these values.
  *
- * @layer scheme — wins over @layer base regardless of import order.
+ * @layer base — lowest priority; always overridden by @layer scheme.
  *
- * Active when: data-scheme="light" on <html>.
+ * Semantic token contract:
+ *   --surface-1 … --surface-4   background layers, light-to-dark within the scheme
+ *   --text-1, --text-2           primary and secondary text
+ *   --link, --link-visited       interactive/anchor colors
+ *   --scrollthumb-color          scrollbar thumb
+ *   --scrolltrack-color          scrollbar track
  */
 
-@layer scheme {
-  :root[data-scheme="light"] {
-    color-scheme: light;
+@layer base {
+  :root {
+    color-scheme: dark;
 
     /* ── Semantic surface tokens ─────────────────────────────────────── */
-    --surface-1: var(--gray-0);
-    --surface-2: var(--gray-2);
-    --surface-3: var(--gray-3);
-    --surface-4: var(--gray-4);
+    --surface-1: var(--gray-9);
+    --surface-2: var(--gray-8);
+    --surface-3: var(--gray-7);
+    --surface-4: var(--gray-6);
 
     /* ── Semantic stroke tokens ──────────────────────────────────────── */
     --stroke-subtle: var(--surface-3);
@@ -24,32 +31,33 @@
     --stroke-strong: var(--text-2);
 
     /* ── Semantic text tokens ────────────────────────────────────────── */
-    --text-1: var(--gray-10);
-    --text-2: var(--gray-7);
-    --heading-1: var(--gray-11);
+    --text-1: var(--gray-1);
+    --text-2: var(--gray-4);
+    --heading-1: var(--gray-0);
 
     /* ── Semantic link tokens ────────────────────────────────────────── */
-    --link: var(--blue-9);
-    --link-visited: var(--purple-9);
+    --link: var(--blue-4);
+    --link-visited: var(--purple-4);
 
     /* ── Scrollbar ───────────────────────────────────────────────────── */
-    --scrollthumb-color: var(--gray-7);
+    --scrollthumb-color: var(--gray-5);
     --scrolltrack-color: transparent;
 
     /* ── Base background ─────────────────────────────────────────────────────────── */
-    --base-background: var(--gray-2);
+    /* Deepest background — sits beneath surface-1. Use on <html>/<body>. */
+    --base-background: var(--gray-11);
 
     /* ── Brand & accent ──────────────────────────────────────────────────────────── */
-    --brand: var(--violet-8);
-    --brand-text: var(--violet-0);
-    --accent: var(--indigo-8);
-    --accent-text: var(--indigo-0);
+    --brand: var(--violet-4);
+    --brand-text: var(--violet-1);
+    --accent: var(--indigo-3);
+    --accent-text: var(--indigo-1);
 
     /* ── State surfaces ──────────────────────────────────────────────────────────── */
-    --surface-error: var(--red-1);
-    --text-error: var(--red-9);
-    --surface-warning: var(--yellow-1);
-    --text-warning: var(--orange-9);
+    --surface-error: var(--red-12);
+    --text-error: var(--red-3);
+    --surface-warning: var(--orange-12);
+    --text-warning: var(--orange-3);
 
     /* ── Table accents ─────────────────────────────────────────────────── */
     --table-bg: var(--surface-2);

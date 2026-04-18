@@ -1,16 +1,28 @@
 /**
- * compact.density.css — divergent props from normal (default) density
+ * compact.density.css — compact density overrides.
  *
- * Only contains values that differ from normal.density.css.
+ * Overrides only the tokens that differ from the normal base (base.density.css).
+ *
+ * @layer density — wins over @layer base regardless of import order.
+ *
+ * Active when: data-density="compact" on <html>.
  */
 
-@container style(--se-selected-density: compact) {
-  :root {
-    --se-radius-1: var(--radius-1);
-    --se-radius-2: var(--radius-2);
-    --se-space-1: var(--size-1);
-    --se-space-2: var(--size-2);
-    --se-space-3: var(--size-3);
-    --se-space-4: var(--size-5);
+@layer density {
+  :root[data-density="compact"] {
+    /* ── Semantic spacing tokens ─────────────────────────────────────────── */
+    --space-control-inline: var(--size-2);
+    --space-control-block: var(--size-1);
+    --space-gap-inline: var(--size-1);
+    --space-gap-block: var(--size-1);
+    --space-inset-inline: var(--size-2);
+    --space-inset-block: var(--size-2);
+    --space-cluster: var(--size-2);
+    --space-stack: var(--size-3);
+    --space-section: var(--size-5);
+
+    /* ── Semantic radius tokens ──────────────────────────────────────────── */
+    --radius-control: var(--radius-1);
+    --radius-surface: var(--radius-2);
   }
 }

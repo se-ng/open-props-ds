@@ -1,0 +1,137 @@
+<article>
+  <h1>Components Kitchen Sink</h1>
+  <p>Library primitives in isolation from baseline HTML element styling.</p>
+</article>
+
+<section>
+  <h2>Panel</h2>
+  <p>Panel is intentionally minimal: one surface, one boundary, one radius, and inset spacing.</p>
+  <se-panel>
+    <h3>Base panel</h3>
+    <p>This is the lowest-level container primitive. Variants can be composed on top.</p>
+  </se-panel>
+</section>
+
+<section>
+  <h2>Composed structure example</h2>
+  <div class="panel-stack">
+    <se-panel>
+      <header>
+        <h3>Composed header</h3>
+      </header>
+      <p>Keep Panel generic and layer specific patterns in content structure or higher components.</p>
+      <footer>
+        <small>Future Card can build on this primitive.</small>
+      </footer>
+    </se-panel>
+  </div>
+</section>
+
+<section>
+  <h2>Panel surfaces</h2>
+  <p>Panel remains generic. Surface choice is composed by setting <code>--panel-background</code>.</p>
+  <div class="panel-surface-grid">
+    <se-panel style="--panel-background: var(--surface-1);">
+      <h3>Surface 1</h3>
+      <p><code>--panel-background: var(--surface-1)</code></p>
+    </se-panel>
+
+    <se-panel style="--panel-background: var(--surface-2);">
+      <h3>Surface 2</h3>
+      <p><code>--panel-background: var(--surface-2)</code></p>
+    </se-panel>
+
+    <se-panel style="--panel-background: var(--surface-3);">
+      <h3>Surface 3</h3>
+      <p><code>--panel-background: var(--surface-3)</code></p>
+    </se-panel>
+
+    <se-panel style="--panel-background: var(--surface-4);">
+      <h3>Surface 4</h3>
+      <p><code>--panel-background: var(--surface-4)</code></p>
+    </se-panel>
+  </div>
+</section>
+
+<section>
+  <h2>Buttons</h2>
+  <se-panel>
+    <div class="button-matrix">
+      <div class="button-row">
+        <div class="button-actions">
+          <button se type="button">Normal</button>
+          <button se type="button" disabled>Normal disabled</button>
+        </div>
+        <p class="button-note"><strong>Normal:</strong> <code>intent</code> omitted (default) for routine, non-destructive actions.</p>
+      </div>
+      <div class="button-row">
+        <div class="button-actions">
+          <button se type="button" intent="primary">Primary</button>
+          <button se type="button" intent="primary" disabled>Primary disabled</button>
+        </div>
+        <p class="button-note"><strong>Primary:</strong> <code>intent="primary"</code> for the highest-emphasis action in a view, usually one per section.</p>
+      </div>
+      <div class="button-row">
+        <div class="button-actions">
+          <button se type="button" intent="secondary">Secondary</button>
+          <button se type="button" intent="secondary" disabled>Secondary disabled</button>
+        </div>
+        <p class="button-note"><strong>Secondary:</strong> <code>intent="secondary"</code> for alternate actions when primary already represents the main path.</p>
+      </div>
+      <div class="button-row">
+        <div class="button-actions">
+          <button se type="button" intent="quiet">Quiet</button>
+          <button se type="button" intent="quiet" disabled>Quiet disabled</button>
+        </div>
+        <p class="button-note"><strong>Quiet:</strong> <code>intent="quiet"</code> for low-emphasis actions that remain discoverable without stealing focus.</p>
+      </div>
+      <div class="button-row">
+        <div class="button-actions">
+          <button se type="button" intent="danger">Danger</button>
+          <button se type="button" intent="danger" disabled>Danger disabled</button>
+        </div>
+        <p class="button-note"><strong>Danger:</strong> <code>intent="danger"</code> for destructive actions; pair with clear labeling and confirmation when irreversible.</p>
+      </div>
+    </div>
+
+    <div class="icon-actions">
+      <h3>Icon action buttons</h3>
+      <div class="button-row">
+        <div class="button-actions">
+          <button se type="button" shape="round" size="sm" aria-label="Refresh data">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+              <path d="M21 3v6h-6" />
+            </svg>
+          </button>
+          <button se type="button" shape="round" size="sm" intent="quiet" aria-label="Open filters">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16" />
+              <path d="M7 12h10" />
+              <path d="M10 18h4" />
+            </svg>
+          </button>
+          <button se type="button" shape="round" size="sm" intent="danger" aria-label="Delete row">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6h18" />
+              <path d="M8 6V4h8v2" />
+              <path d="M7 6l1 14h8l1-14" />
+              <path d="M10 11v6" />
+              <path d="M14 11v6" />
+            </svg>
+          </button>
+          <button se type="button" shape="round" size="sm" intent="danger" aria-label="Delete row" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6h18" />
+              <path d="M8 6V4h8v2" />
+              <path d="M7 6l1 14h8l1-14" />
+              <path d="M10 11v6" />
+              <path d="M14 11v6" />
+            </svg>
+          </button>
+        </div>
+        <p class="button-note"><strong>Icon-only:</strong> use <code>shape="round" size="sm"</code> and always provide an accessible name via <code>aria-label</code>. Keep SVGs decorative with <code>aria-hidden="true"</code>.</p>
+      </div>
+    </div>
+  </se-panel>
+</section>

@@ -1,21 +1,24 @@
 # Iteration Plan
 
-Work top-to-bottom within each phase. Start each session by re-indexing with jCodeMunch and jDocMunch, then read this file and markdown/session-1-learnings.md.
+Work top-to-bottom within each phase. Start each session by re-indexing with jCodeMunch and jDocMunch, then read this file, markdown/session-1-learnings.md, and markdown/session-2-learnings.md.
 
-**Learnings doc:** markdown/session-1-learnings.md
+**Learnings docs:** markdown/session-1-learnings.md, markdown/session-2-learnings.md
 
 ---
 
-## Status (end of session 1)
+## Status (updated April 17, 2026)
 
 | Item | Status |
-|---|---|
+| --- | --- |
 | Monorepo scaffolded | done |
 | Packages pinned to exact versions | done |
 | semantic-release + commitlint + husky | done |
+| Optional reset layer (copyable baseline) | in progress |
+| Semantic token model (surface/text/link/etc.) | in progress |
 | CSS theme file stubs | in progress |
 | html-kitchen-sink component | done |
-| ThemeService | pending |
+| ThemeService | done |
+| Showcase theme-switcher UI | done |
 | a11y pipeline | pending |
 | ESLint + contributing guide | pending |
 | GitHub Actions CI | pending |
@@ -27,38 +30,70 @@ Work top-to-bottom within each phase. Start each session by re-indexing with jCo
 
 ## Phase 1 - Foundations
 
-### Step 1: Fill out CSS theme tokens
+### Step 1: Optional reset + semantic token foundation
 
 Files: projects/ng-open-ui/src/styles/
 
-- Populate dark.theme.css with full Open Props color + font scale (dark)
-  Use --gray-*, --blue-*, --violet-*, --font-*, --text-* from Open Props.
-  Reference argyleink CodePen XWaYyWe for multi-theme structure.
-- Populate normal.density.css with full Open Props --size-* and --radius-* scale
-- Fill divergent props for light.theme.css, compact.density.css, spacious.density.css
-- Add mobile.density.css stub
-- Add woodlike.theme.css and other color variants from argyleink pen
+Goals:
 
-Acceptance: ng serve showcase shows the kitchen-sink visually styled, dark default,
-OS light-mode respected, no fallback values visible.
+- Provide an optional reset stylesheet inspired by Open Props normalize semantics,
+  but maintained by this library (not imported verbatim).
+- Keep reset in its own dedicated cascade layer so consumers can copy/fork it and
+  replace it with their own version without breaking component/theme layers.
+- Move toward semantic token naming as the primary contract (surface/text/link/etc.),
+  with DS-specific aliases only where needed.
+
+Deliverables:
+
+- Add a standalone reset file (working name: reset.css) with low-specificity,
+  semantic baseline rules for typography, forms, media, focus, and spacing primitives.
+- Define/reset layer order explicitly in preset.css so precedence is predictable.
+  Target order: reset → base → scheme → density.
+- Expand base.theme.css to define semantic primitives used by reset and components:
+  --surface-1..4, --text-1..2, --link, --link-visited, --focus-ring,
+  plus any required supporting tokens.
+- Keep current se-* tokens as compatibility aliases during transition, then phase out
+  once components consume semantic tokens directly.
+- Update light/dark/woodlike theme files to override semantic tokens first,
+  not component-specific values.
+- Ensure the reset remains optional for consumers (separate import path from preset).
+
+Acceptance:
+
+- Consumers can choose either:
+  1) preset only
+  2) preset + library reset
+  3) preset + their own reset
+- Kitchen sink renders correctly in dark/light + density variants with no token gaps.
+- Reset styles can be removed/replaced without breaking theme switching behavior.
+
+Session 2 decisions:
+
+- Density tokens were renamed from numeric scale tokens to role-based tokens.
+- Control padding is part of the density contract via `--space-control-inline` and `--space-control-block`.
+- Checkbox/radio option groups intentionally default to horizontal wrapped layout in reset for desktop-first baseline behavior.
+- Theme review decisions and follow-up critique are captured in markdown/session-2-learnings.md.
 
 ---
 
-### Step 2: ThemeService
+### Step 2: ThemeService (done)
 
 File: projects/ng-open-ui/src/lib/theme.service.ts
 
 Signal-based service (providedIn root, inject(), Angular 22+).
 Two independent axes:
 
-  setScheme(scheme: ColorScheme)    sets --se-selected-scheme on :root inline style
-  resetScheme()                     removes override; OS preference takes over
-  setDensity(density: DensityScheme)
-  resetDensity()
-  currentScheme: Signal<ColorScheme>
-  currentDensity: Signal<DensityScheme>
+```ts
+setScheme(scheme: ColorScheme)    // sets --se-selected-scheme on :root inline style
+resetScheme()                     // removes override; OS preference takes over
+setDensity(density: DensityScheme)
+resetDensity()
+currentScheme: Signal<ColorScheme>
+currentDensity: Signal<DensityScheme>
+```
 
 Types:
+
   ColorScheme = 'dark' | 'light' | 'woodlike' (expand as themes are added)
   DensityScheme = 'normal' | 'compact' | 'spacious' | 'mobile'
 
@@ -72,12 +107,14 @@ Add a theme-switcher UI to the showcase app header to exercise it live.
 Files: eslint.config.js, CONTRIBUTING.md
 
 ESLint:
+
 - Install @angular-eslint/eslint-plugin and @angular-eslint/eslint-plugin-template
 - Configure component-selector to allow native element attribute selectors
   (button[se], input[se]) in addition to the se- prefix element pattern.
   Rule: { type: ["element", "attribute"], prefix: "se", style: "kebab-case" }
 
 CONTRIBUTING.md:
+
 - Component API conventions (native hosts, CSS attr selectors, no classnames)
 - When to add Angular input vs rely on HTML attribute
 - ViewEncapsulation.Emulated always
@@ -100,6 +137,7 @@ CONTRIBUTING.md:
 File: .github/workflows/ci.yml
 
 Jobs:
+
 1. install   - pnpm install --frozen-lockfile
 2. lint      - commitlint on PR title, ESLint
 3. build     - ng build ng-open-ui && ng build showcase
@@ -134,6 +172,7 @@ Work through components in this order (simplest to most complex):
 9. se-badge
 
 Each component needs:
+
 - Component file + CSS file (no inline styles)
 - Unit test with axe audit
 - Entry in html-kitchen-sink to show it live

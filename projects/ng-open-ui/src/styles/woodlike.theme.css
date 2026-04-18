@@ -1,61 +1,59 @@
 /**
- * light.theme.css — light color scheme overrides.
+ * woodlike.theme.css — warm, natural wood color theme.
  *
- * Overrides only the tokens that differ from the dark base (base.theme.css).
+ * Dark-based. Overrides only the tokens that differ from the dark base (base.theme.css).
+ * Surfaces drawn from the sand scale (dark walnut tones), text from warm brown cream,
+ * and interactive elements in amber/choco.
  *
  * @layer scheme — wins over @layer base regardless of import order.
  *
- * Active when: data-scheme="light" on <html>.
+ * Active when: data-scheme="woodlike" on <html>.
  */
 
 @layer scheme {
-  :root[data-scheme="light"] {
-    color-scheme: light;
+  :root[data-scheme="woodlike"] {
+    color-scheme: dark;
 
     /* ── Semantic surface tokens ─────────────────────────────────────── */
-    --surface-1: var(--gray-0);
-    --surface-2: var(--gray-2);
-    --surface-3: var(--gray-3);
-    --surface-4: var(--gray-4);
+    /* Surfaces — dark walnut grain; start at sand-10 so surface-1 is visibly
+       lighter than the near-black base-background (brown-12 ≈ sand-12). */
+    --surface-1: var(--sand-10);
+    --surface-2: var(--sand-8);
+    --surface-3: var(--sand-7);
+    --surface-4: var(--sand-6);
 
     /* ── Semantic stroke tokens ──────────────────────────────────────── */
-    --stroke-subtle: var(--surface-3);
-    --stroke-default: var(--surface-4);
-    --stroke-strong: var(--text-2);
+    --stroke-subtle: var(--choco-8);
+    --stroke-default: var(--choco-7);
+    --stroke-strong: var(--choco-5);
 
     /* ── Semantic text tokens ────────────────────────────────────────── */
-    --text-1: var(--gray-10);
-    --text-2: var(--gray-7);
-    --heading-1: var(--gray-11);
+    /* Text — warm cream */
+    --text-1: var(--brown-1);
+    --text-2: var(--brown-4);
 
     /* ── Semantic link tokens ────────────────────────────────────────── */
-    --link: var(--blue-9);
-    --link-visited: var(--purple-9);
+    /* Interactive — amber grain highlights */
+    --link: var(--choco-3);
+    --link-visited: var(--choco-4);
 
     /* ── Scrollbar ───────────────────────────────────────────────────── */
-    --scrollthumb-color: var(--gray-7);
     --scrolltrack-color: transparent;
 
     /* ── Base background ─────────────────────────────────────────────────────────── */
-    --base-background: var(--gray-2);
+    --base-background: var(--brown-12);
 
     /* ── Brand & accent ──────────────────────────────────────────────────────────── */
-    --brand: var(--violet-8);
-    --brand-text: var(--violet-0);
-    --accent: var(--indigo-8);
-    --accent-text: var(--indigo-0);
-
-    /* ── State surfaces ──────────────────────────────────────────────────────────── */
-    --surface-error: var(--red-1);
-    --text-error: var(--red-9);
-    --surface-warning: var(--yellow-1);
-    --text-warning: var(--orange-9);
+    --brand: var(--choco-6);
+    --brand-text: var(--choco-1);
+    --accent: var(--sand-5);
+    --accent-text: var(--sand-12);
 
     /* ── Table accents ─────────────────────────────────────────────────── */
     --table-bg: var(--surface-2);
     --table-cell-bg: var(--surface-1);
     --table-cell-alt-bg: var(--surface-2);
-    --table-head-bg: var(--surface-3);
+    --table-head-bg: var(--choco-9);
     --table-head-text: var(--text-1);
     --table-border: var(--stroke-default);
     --table-divider: var(--stroke-default);
@@ -63,3 +61,4 @@
     --table-cell-hover-bg: var(--surface-4);
   }
 }
+

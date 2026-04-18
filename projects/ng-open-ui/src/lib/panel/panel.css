@@ -1,0 +1,12 @@
+se-panel {
+  display: block;
+  --panel-background: var(--surface-1);
+  --panel-border: var(--border-size-1) solid var(--stroke-default, var(--surface-4));
+  --panel-padding-block: var(--space-inset-block);
+  --panel-padding-inline: var(--space-inset-inline);
+  background: var(--panel-background);
+  border: var(--panel-border);
+  border-radius: var(--radius-surface);
+  padding-block: var(--panel-padding-block);
+  padding-inline: var(--panel-padding-inline);
+}

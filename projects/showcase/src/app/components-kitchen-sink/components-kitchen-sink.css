@@ -1,0 +1,68 @@
+section {
+  margin-block: var(--space-section, 3rem);
+}
+
+section > * + * {
+  margin-block-start: var(--space-gap-block, 0.5rem);
+}
+
+.panel-stack {
+  display: grid;
+  gap: var(--space-cluster);
+}
+
+.panel-surface-grid {
+  display: grid;
+  gap: var(--space-cluster);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.button-matrix {
+  display: grid;
+  gap: var(--space-gap-block);
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-gap-inline);
+}
+
+.button-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gap-inline);
+}
+
+.button-note {
+  margin: 0;
+  color: var(--text-2);
+}
+
+.icon-actions {
+  display: grid;
+  gap: var(--space-gap-block);
+  margin-block-start: var(--space-cluster);
+  padding-block-start: var(--space-gap-block);
+  border-block-start: var(--border-size-1) solid var(--stroke-subtle);
+}
+
+@media (max-width: 42rem) {
+  .panel-surface-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+se-panel h3 {
+  margin-block-end: var(--space-gap-block);
+}
+
+se-panel footer {
+  margin-block-start: var(--space-cluster);
+}

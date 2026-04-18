@@ -1,0 +1,30 @@
+/**
+ * base.density.css — canonical spacing/shape token definitions, normal values as defaults.
+ *
+ * Always imported via preset.css. Every density token the design system uses must
+ * be defined here. Density override files (compact.density.css, spacious.density.css, …)
+ * only redefine the tokens they change; the rest fall back to these values.
+ *
+ * @layer base — lowest priority; always overridden by @layer density.
+ *
+ * TODO: expand to full component-level density tokens as components are added.
+ */
+
+@layer base {
+  :root {
+    /* ── Semantic spacing tokens ─────────────────────────────────────────── */
+    --space-control-inline: var(--size-2);
+    --space-control-block: var(--size-1);
+    --space-gap-inline: var(--size-2);
+    --space-gap-block: var(--size-2);
+    --space-inset-inline: var(--size-3);
+    --space-inset-block: var(--size-3);
+    --space-cluster: var(--size-3);
+    --space-stack: var(--size-5);
+    --space-section: var(--size-7);
+
+    /* ── Semantic radius tokens ──────────────────────────────────────────── */
+    --radius-control: var(--radius-2);
+    --radius-surface: var(--radius-3);
+  }
+}
