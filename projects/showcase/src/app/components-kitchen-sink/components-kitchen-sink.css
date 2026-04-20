@@ -48,6 +48,96 @@ section > * + * {
   border-block-start: var(--border-size-1) solid var(--stroke-subtle);
 }
 
+.action-composition-grid {
+  display: grid;
+  gap: var(--space-cluster);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.action-composition {
+  display: grid;
+  gap: var(--space-gap-block);
+  padding: var(--space-inset-block) var(--space-inset-inline);
+  background: var(--surface-1);
+  border: var(--border-size-1) solid var(--stroke-subtle);
+  border-radius: var(--radius-surface);
+}
+
+.action-composition h4,
+.action-composition h5 {
+  margin: 0;
+}
+
+.composition-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-gap-inline);
+}
+
+.icon-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gap-inline);
+}
+
+.action-table {
+  margin: 0;
+}
+
+.action-table td:last-child,
+.action-table th:last-child {
+  inline-size: 1%;
+  white-space: nowrap;
+}
+
+.badge-matrix {
+  display: grid;
+  gap: var(--space-gap-block);
+}
+
+.badge-row {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-gap-inline);
+}
+
+.badge-demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-1);
+}
+
+.badge-note {
+  margin: 0;
+  color: var(--text-2);
+}
+
+.badge-composition-grid {
+  display: grid;
+  gap: var(--space-cluster);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-block-start: var(--space-cluster);
+  padding-block-start: var(--space-gap-block);
+  border-block-start: var(--border-size-1) solid var(--stroke-subtle);
+}
+
+.badge-composition {
+  display: grid;
+  gap: var(--space-gap-block);
+  padding: var(--space-inset-block) var(--space-inset-inline);
+  background: var(--surface-1);
+  border: var(--border-size-1) solid var(--stroke-subtle);
+  border-radius: var(--radius-surface);
+}
+
+.badge-composition h4 {
+  margin: 0;
+}
+
+
 @media (max-width: 42rem) {
   .panel-surface-grid {
     grid-template-columns: 1fr;
@@ -55,6 +145,24 @@ section > * + * {
 
   .button-row {
     grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .action-composition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .badge-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .badge-composition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .composition-card-header {
+    flex-direction: column;
     align-items: start;
   }
 }

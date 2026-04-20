@@ -58,6 +58,8 @@
     --text-error: var(--red-3);
     --surface-warning: var(--orange-12);
     --text-warning: var(--orange-3);
+    --surface-success: var(--green-12);
+    --text-success: var(--green-3);
 
     /* ── Table accents ─────────────────────────────────────────────────── */
     --table-bg: var(--surface-2);

@@ -69,6 +69,16 @@ button[se][intent='quiet'] {
   --button-color: var(--text-1);
 }
 
+/* ── Action intent — utility controls (icon-first) ─────────────────────── */
+button[se][intent='action'] {
+  --button-background: color-mix(in oklab, var(--surface-2) 24%, transparent);
+  --button-background-hover: var(--surface-2);
+  --button-background-active: var(--surface-3);
+  --button-border: var(--border-size-1) solid color-mix(in oklab, var(--stroke-default) 28%, transparent);
+  --button-border-hover: var(--border-size-1) solid var(--stroke-default);
+  --button-color: var(--text-1);
+}
+
 /* ── Danger intent — destructive action styling ────────────────────────── */
 button[se][intent='danger'] {
   --button-background: var(--surface-warning);
@@ -87,6 +97,37 @@ button[se]:where(:disabled, [aria-disabled='true']) {
 
 button[se][aria-disabled='true'] {
   pointer-events: none;
+}
+
+/* ── SVG icons inside buttons ───────────────────────────────────────────── */
+button[se] svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Round shape — equal padding, circular border ───────────────────────── */
+button[se][shape='round'] {
+  padding: var(--button-padding-block);
+  border-radius: var(--radius-round);
+}
+
+/* ── Size variants ──────────────────────────────────────────────────────── */
+button[se][size='sm'] {
+  --button-padding-inline: calc(var(--space-control-inline) * 0.75);
+  --button-padding-block: calc(var(--space-control-block) * 0.75);
+  font-size: var(--font-size-0);
+}
+
+button[se][size='lg'] {
+  --button-padding-inline: calc(var(--space-control-inline) * 1.5);
+  --button-padding-block: calc(var(--space-control-block) * 1.5);
+  font-size: var(--font-size-2);
 }
 
 /* ── Round icon-action shape ───────────────────────────────────────────── */

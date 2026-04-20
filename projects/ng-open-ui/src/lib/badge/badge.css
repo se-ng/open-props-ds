@@ -1,0 +1,94 @@
+/* Badge: Status indicator / notification counter */
+
+super[badge] {
+  /* Protrude outside parent corner relative to badge's own font-size.
+     Parent must have position: relative. */
+  --_badge-offset: -.6em;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  min-width: 1.5em;
+  height: 1.5em;
+  padding: 0 var(--space-control-inline);
+  border-radius: 100vmax;
+  font-size: var(--font-size-0);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  /* Chrome ring separates badge from underlying content; not decorative elevation */
+  box-shadow: 0 0 0 var(--border-size-2) var(--surface-1);
+
+  /* Default position: top-right */
+  top: var(--_badge-offset);
+  right: var(--_badge-offset);
+
+  /* Intent: notice (default) — brand fill using the explicit --brand-text pair */
+  background-color: var(--brand);
+  color: var(--brand-text);
+}
+
+/* Intent: warning — filled from semantic warning pair; surface token as text = high
+   contrast guaranteed in any scheme (surface-warning is always opposite end to text-warning) */
+super[badge][intent="warning"] {
+  background-color: color-mix(in oklab, var(--text-warning) 65%, var(--surface-warning));
+  color: var(--surface-warning);
+}
+
+/* Intent: danger */
+super[badge][intent="danger"] {
+  background-color: color-mix(in oklab, var(--text-error) 65%, var(--surface-error));
+  color: var(--surface-error);
+}
+
+/* Intent: success */
+super[badge][intent="success"] {
+  background-color: color-mix(in oklab, var(--text-success) 65%, var(--surface-success));
+  color: var(--surface-success);
+}
+
+/* Position: top-left */
+super[badge][position="top-left"] {
+  top: var(--_badge-offset);
+  right: auto;
+  left: var(--_badge-offset);
+}
+
+/* Position: bottom-right */
+super[badge][position="bottom-right"] {
+  top: auto;
+  right: var(--_badge-offset);
+  bottom: var(--_badge-offset);
+}
+
+/* Position: bottom-left */
+super[badge][position="bottom-left"] {
+  top: auto;
+  right: auto;
+  left: var(--_badge-offset);
+  bottom: var(--_badge-offset);
+}
+
+/* State: pulse (animated attention) */
+super[badge][state="pulse"] {
+  animation: badge-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Empty badge: indicator dot only, no counter text */
+super[badge]:empty {
+  --_badge-offset: -.35em;
+  min-width: 1em;
+  height: 1em;
+  padding: 0;
+}

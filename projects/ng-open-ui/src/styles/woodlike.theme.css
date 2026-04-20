@@ -49,6 +49,15 @@
     --accent: var(--sand-5);
     --accent-text: var(--sand-12);
 
+    /* ── State surfaces ──────────────────────────────────────────────────────────── */
+    /* Warm-toned state pairs — semantically distinct but coherent on the sand/choco palette. */
+    --surface-error: var(--red-12);
+    --text-error: var(--red-4);
+    --surface-warning: var(--orange-12);
+    --text-warning: var(--yellow-4);
+    --surface-success: var(--green-12);
+    --text-success: var(--lime-4);
+
     /* ── Table accents ─────────────────────────────────────────────────── */
     --table-bg: var(--surface-2);
     --table-cell-bg: var(--surface-1);

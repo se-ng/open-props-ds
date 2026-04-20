@@ -1,0 +1,264 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - link "HTML Kitchen Sink" [ref=e5] [cursor=pointer]:
+        - /url: /html-kitchen-sink
+      - link "Components Kitchen Sink" [ref=e6] [cursor=pointer]:
+        - /url: /components-kitchen-sink
+    - generic [ref=e7]:
+      - group "Scheme" [ref=e8]:
+        - generic [ref=e9]: Scheme
+        - generic [ref=e10] [cursor=pointer]:
+          - radio "dark" [ref=e11]
+          - text: dark
+        - generic [ref=e12] [cursor=pointer]:
+          - radio "light" [checked] [ref=e13]
+          - text: light
+        - generic [ref=e14] [cursor=pointer]:
+          - radio "woodlike" [ref=e15]
+          - text: woodlike
+      - group "Density" [ref=e16]:
+        - generic [ref=e17]: Density
+        - generic [ref=e18] [cursor=pointer]:
+          - radio "normal" [checked] [ref=e19]
+          - text: normal
+        - generic [ref=e20] [cursor=pointer]:
+          - radio "compact" [ref=e21]
+          - text: compact
+        - generic [ref=e22] [cursor=pointer]:
+          - radio "spacious" [ref=e23]
+          - text: spacious
+        - generic [ref=e24] [cursor=pointer]:
+          - radio "mobile" [ref=e25]
+          - text: mobile
+  - main [ref=e26]:
+    - generic [ref=e27]:
+      - article [ref=e28]:
+        - heading "Components Kitchen Sink" [level=1] [ref=e29]
+        - paragraph [ref=e30]: Library primitives in isolation from baseline HTML element styling.
+      - generic [ref=e31]:
+        - heading "Panel" [level=2] [ref=e32]
+        - paragraph [ref=e33]: "Panel is intentionally minimal: one surface, one boundary, one radius, and inset spacing."
+        - generic [ref=e34]:
+          - heading "Base panel" [level=3] [ref=e35]
+          - paragraph [ref=e36]: This is the lowest-level container primitive. Variants can be composed on top.
+      - generic [ref=e37]:
+        - heading "Composed structure example" [level=2] [ref=e38]
+        - generic [ref=e40]:
+          - heading "Composed header" [level=3] [ref=e42]
+          - paragraph [ref=e43]: Keep Panel generic and layer specific patterns in content structure or higher components.
+          - generic [ref=e44]: Future Card can build on this primitive.
+      - generic [ref=e45]:
+        - heading "Panel surfaces" [level=2] [ref=e46]
+        - paragraph [ref=e47]:
+          - text: Panel remains generic. Surface choice is composed by setting
+          - code [ref=e48]: "--panel-background"
+          - text: .
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - heading "Surface 1" [level=3] [ref=e51]
+            - paragraph [ref=e52]:
+              - code [ref=e53]: "--panel-background: var(--surface-1)"
+          - generic [ref=e54]:
+            - heading "Surface 2" [level=3] [ref=e55]
+            - paragraph [ref=e56]:
+              - code [ref=e57]: "--panel-background: var(--surface-2)"
+          - generic [ref=e58]:
+            - heading "Surface 3" [level=3] [ref=e59]
+            - paragraph [ref=e60]:
+              - code [ref=e61]: "--panel-background: var(--surface-3)"
+          - generic [ref=e62]:
+            - heading "Surface 4" [level=3] [ref=e63]
+            - paragraph [ref=e64]:
+              - code [ref=e65]: "--panel-background: var(--surface-4)"
+      - generic [ref=e66]:
+        - heading "Buttons" [level=2] [ref=e67]
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - generic [ref=e71]:
+                - button "Normal" [ref=e72] [cursor=pointer]
+                - button "Normal disabled" [disabled] [ref=e73]
+              - paragraph [ref=e74]:
+                - strong [ref=e75]: "Normal:"
+                - code [ref=e76]: intent
+                - text: omitted (default) for routine, non-destructive actions.
+            - generic [ref=e77]:
+              - generic [ref=e78]:
+                - button "Primary" [ref=e79] [cursor=pointer]
+                - button "Primary disabled" [disabled] [ref=e80]
+              - paragraph [ref=e81]:
+                - strong [ref=e82]: "Primary:"
+                - code [ref=e83]: intent="primary"
+                - text: for the highest-emphasis action in a view, usually one per section.
+            - generic [ref=e84]:
+              - generic [ref=e85]:
+                - button "Secondary" [ref=e86] [cursor=pointer]
+                - button "Secondary disabled" [disabled] [ref=e87]
+              - paragraph [ref=e88]:
+                - strong [ref=e89]: "Secondary:"
+                - code [ref=e90]: intent="secondary"
+                - text: for alternate actions when primary already represents the main path.
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - button "Quiet" [ref=e93] [cursor=pointer]
+                - button "Quiet disabled" [disabled] [ref=e94]
+              - paragraph [ref=e95]:
+                - strong [ref=e96]: "Quiet:"
+                - code [ref=e97]: intent="quiet"
+                - text: for low-emphasis actions that remain discoverable without stealing focus.
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - button "Danger" [ref=e100] [cursor=pointer]
+                - button "Danger disabled" [disabled] [ref=e101]
+              - paragraph [ref=e102]:
+                - strong [ref=e103]: "Danger:"
+                - code [ref=e104]: intent="danger"
+                - text: for destructive actions; pair with clear labeling and confirmation when irreversible.
+          - generic [ref=e105]:
+            - heading "Icon action buttons" [level=3] [ref=e106]
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - button "Refresh data" [ref=e109] [cursor=pointer]:
+                  - img [ref=e110]
+                - button "Open filters" [ref=e113] [cursor=pointer]:
+                  - img [ref=e114]
+                - button "Delete row" [ref=e115] [cursor=pointer]:
+                  - img [ref=e116]
+                - button "Delete row" [disabled] [ref=e119]:
+                  - img [ref=e120]
+              - paragraph [ref=e123]:
+                - strong [ref=e124]: "Icon-only:"
+                - text: use
+                - code [ref=e125]: shape="round" size="sm"
+                - text: ", prefer"
+                - code [ref=e126]: intent="action"
+                - text: for utility controls, and always provide an accessible name via
+                - code [ref=e127]: aria-label
+                - text: . Keep SVGs decorative with
+                - code [ref=e128]: aria-hidden="true"
+                - text: .
+            - generic [ref=e129]:
+              - generic [ref=e130]:
+                - heading "Card header actions" [level=4] [ref=e131]
+                - generic [ref=e132]:
+                  - heading "Quarterly report" [level=5] [ref=e133]
+                  - group "Card actions" [ref=e134]:
+                    - button "Edit report" [ref=e135] [cursor=pointer]:
+                      - img [ref=e136]
+                    - button "Duplicate report" [ref=e139] [cursor=pointer]:
+                      - img [ref=e140]
+                    - button "Archive report" [ref=e143] [cursor=pointer]:
+                      - img [ref=e144]
+                - paragraph [ref=e146]:
+                  - strong [ref=e147]: "Pattern:"
+                  - text: keep icon actions in a labeled toolbar group and reserve
+                  - code [ref=e148]: intent="danger"
+                  - text: for destructive controls only.
+              - generic [ref=e149]:
+                - heading "Table row actions" [level=4] [ref=e150]
+                - table [ref=e151]:
+                  - rowgroup [ref=e152]:
+                    - row "Invoice Amount Status Actions" [ref=e153]:
+                      - columnheader "Invoice" [ref=e154]
+                      - columnheader "Amount" [ref=e155]
+                      - columnheader "Status" [ref=e156]
+                      - columnheader "Actions" [ref=e157]
+                  - rowgroup [ref=e158]:
+                    - row "#INV-2026-041 € 1.240,00 Approved Invoice row actions" [ref=e159]:
+                      - cell "#INV-2026-041" [ref=e160]
+                      - cell "€ 1.240,00" [ref=e161]
+                      - cell "Approved" [ref=e162]
+                      - cell "Invoice row actions" [ref=e163]:
+                        - group "Invoice row actions" [ref=e164]:
+                          - button "View invoice details" [ref=e165] [cursor=pointer]:
+                            - img [ref=e166]
+                          - button "Delete invoice row" [disabled] [ref=e169]:
+                            - img [ref=e170]
+                - paragraph [ref=e173]:
+                  - strong [ref=e174]: "Pattern:"
+                  - text: table actions stay compact with
+                  - code [ref=e175]: shape="round" size="sm"
+                  - text: ; each control still gets its own accessible name.
+      - generic [ref=e176]:
+        - heading "Badge" [level=2] [ref=e177]
+        - paragraph [ref=e178]: Badge is a status indicator or notification counter. Sits absolutely on or near another element.
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - generic [ref=e183]:
+                - button "Messages" [ref=e184] [cursor=pointer]
+                - generic "3 items": "3"
+              - paragraph [ref=e185]:
+                - strong [ref=e186]: "Default (notice):"
+                - code [ref=e187]: <super badge [count]="3"></super>
+                - text: — subtle blue badge for general notifications.
+            - generic [ref=e188]:
+              - generic [ref=e190]:
+                - button "Alerts" [ref=e191] [cursor=pointer]
+                - generic "7 items": "7"
+              - paragraph [ref=e192]:
+                - strong [ref=e193]: "Warning intent:"
+                - code [ref=e194]: intent="warning"
+                - text: for caution states.
+            - generic [ref=e195]:
+              - generic [ref=e197]:
+                - button "Inbox" [ref=e198] [cursor=pointer]
+                - generic "42 items": "42"
+              - paragraph [ref=e199]:
+                - strong [ref=e200]: "Danger intent:"
+                - code [ref=e201]: intent="danger"
+                - text: for urgent or destructive contexts.
+            - generic [ref=e202]:
+              - generic [ref=e204]:
+                - button "Tasks" [ref=e205] [cursor=pointer]
+                - generic "12 items": "12"
+              - paragraph [ref=e206]:
+                - strong [ref=e207]: "Success intent:"
+                - code [ref=e208]: intent="success"
+                - text: for positive/completed states.
+            - generic [ref=e209]:
+              - generic [ref=e211]:
+                - button "Updates" [ref=e212] [cursor=pointer]
+                - generic "99 items": "99"
+              - paragraph [ref=e213]:
+                - strong [ref=e214]: "Overflow:"
+                - text: counts over 99 show
+                - code [ref=e215]: 99+
+                - text: automatically.
+            - generic [ref=e216]:
+              - button "Online" [ref=e219] [cursor=pointer]
+              - paragraph [ref=e220]:
+                - strong [ref=e221]: "Indicator only (empty):"
+                - code [ref=e222]: <super badge intent="success" state="pulse"></super>
+                - text: — status dot with pulse animation.
+            - generic [ref=e223]:
+              - generic [ref=e225]:
+                - button "Profile" [ref=e226] [cursor=pointer]
+                - generic "2 items": "2"
+              - paragraph [ref=e227]:
+                - strong [ref=e228]: "Position variant:"
+                - code [ref=e229]: position="bottom-left"
+                - text: "for corner placement (default: top-right)."
+          - generic [ref=e230]:
+            - generic [ref=e231]:
+              - heading "Icon button with badge" [level=4] [ref=e232]
+              - generic [ref=e233]:
+                - button "Notifications" [ref=e234] [cursor=pointer]:
+                  - img [ref=e235]
+                - generic "5 items": "5"
+              - paragraph [ref=e237]:
+                - strong [ref=e238]: "Pattern:"
+                - text: badges on icon buttons use
+                - code [ref=e239]: position="top-right"
+                - text: (default) to sit outside the circular hit area.
+            - generic [ref=e240]:
+              - heading "Tab with unread count" [level=4] [ref=e241]
+              - generic [ref=e242]:
+                - button "Inbox 3 items" [ref=e243] [cursor=pointer]:
+                  - text: Inbox
+                  - generic "3 items": "3"
+                - button "Archive" [ref=e244] [cursor=pointer]
+              - paragraph [ref=e245]:
+                - strong [ref=e246]: "Pattern:"
+                - text: badges in tab bars show activity counts; reuse intent colors for consistency with button intents.

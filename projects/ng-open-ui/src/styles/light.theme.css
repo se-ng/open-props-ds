@@ -50,6 +50,8 @@
     --text-error: var(--red-9);
     --surface-warning: var(--yellow-1);
     --text-warning: var(--orange-9);
+    --surface-success: var(--green-1);
+    --text-success: var(--green-9);
 
     /* ── Table accents ─────────────────────────────────────────────────── */
     --table-bg: var(--surface-2);
