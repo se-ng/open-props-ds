@@ -1,0 +1,82 @@
+dialog[se] {
+  --dialog-max-inline-size: min(36rem, calc(100vi - (var(--space-section) * 2)));
+  --dialog-max-block-size: calc(100vb - (var(--space-section) * 2));
+  --dialog-padding-block: var(--space-inset-block);
+  --dialog-padding-inline: var(--space-inset-inline);
+
+  inline-size: min(100%, var(--dialog-max-inline-size));
+  max-inline-size: var(--dialog-max-inline-size);
+  max-block-size: var(--dialog-max-block-size);
+  margin: auto;
+  padding: 0;
+  color: var(--text-1);
+  background: transparent;
+  border: none;
+}
+
+dialog[se][size='narrow'] {
+  --dialog-max-inline-size: min(28rem, calc(100vi - (var(--space-section) * 2)));
+}
+
+dialog[se][size='wide'] {
+  --dialog-max-inline-size: min(48rem, calc(100vi - (var(--space-section) * 2)));
+}
+
+dialog[se]::backdrop {
+  background: var(--dialog-backdrop-color);
+  backdrop-filter: blur(var(--dialog-backdrop-blur)) saturate(var(--dialog-backdrop-saturate));
+  -webkit-backdrop-filter: blur(var(--dialog-backdrop-blur)) saturate(var(--dialog-backdrop-saturate));
+}
+
+dialog[se] > [data-dialog-surface] {
+  display: grid;
+  gap: var(--space-gap-block);
+  max-block-size: inherit;
+  overflow: auto;
+  background: var(--dialog-surface);
+  border: var(--dialog-border);
+  border-radius: var(--radius-surface);
+  box-shadow: var(--dialog-shadow);
+  padding-block: var(--dialog-padding-block);
+  padding-inline: var(--dialog-padding-inline);
+}
+
+dialog[se] [data-dialog-header] {
+  display: grid;
+  gap: var(--space-gap-block);
+}
+
+dialog[se] [data-dialog-title] {
+  margin: 0;
+  color: var(--heading-1, var(--text-1));
+}
+
+dialog[se] [data-dialog-body] {
+  display: grid;
+  gap: var(--space-gap-block);
+  color: var(--text-2);
+}
+
+dialog[se] [data-dialog-actions] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-gap-inline);
+  padding-block-start: var(--space-gap-block);
+  border-block-start: var(--border-size-1) solid var(--stroke-subtle);
+}
+
+@media (max-width: 42rem) {
+  dialog[se] {
+    --dialog-max-inline-size: calc(100vi - (var(--space-cluster) * 2));
+    --dialog-max-block-size: calc(100vb - (var(--space-cluster) * 2));
+  }
+
+  dialog[se] [data-dialog-actions] {
+    justify-content: stretch;
+  }
+
+  dialog[se] [data-dialog-actions] > * {
+    flex: 1 1 100%;
+  }
+}

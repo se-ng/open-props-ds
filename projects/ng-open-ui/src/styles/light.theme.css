@@ -53,6 +53,10 @@
     --surface-success: var(--green-1);
     --text-success: var(--green-9);
 
+    /* ── Dialog overlay tokens ───────────────────────────────────────────────────── */
+    --dialog-backdrop-color: color-mix(in oklab, var(--base-background) 36%, transparent);
+    --dialog-backdrop-saturate: 140%;
+
     /* ── Table accents ─────────────────────────────────────────────────── */
     --table-bg: var(--surface-2);
     --table-cell-bg: var(--surface-1);

@@ -313,3 +313,43 @@
   </se-panel>
 </section>
 
+<section>
+  <h2>Dialog</h2>
+  <p>Dialog is the first floating-layer primitive. It uses the native <code>&lt;dialog&gt;</code> element for semantics and keyboard behavior, while Angular manages open state and focus return.</p>
+  <se-panel>
+    <div class="dialog-demo">
+      <div class="dialog-trigger-row">
+        <button se type="button" intent="danger" (click)="openDialog()">Delete quarterly report</button>
+        <p class="dialog-result"><strong>Last close result:</strong> <code>{{ dialogResult() }}</code></p>
+      </div>
+
+      <p class="dialog-note"><strong>Backdrop:</strong> frosted glass comes from theme tokens such as <code>--dialog-backdrop-color</code> and <code>--dialog-backdrop-blur</code>, so schemes can soften or intensify it without rewriting component CSS.</p>
+      <p class="dialog-note"><strong>Dismissal default:</strong> backdrop/light-dismiss is opt-in via <code>[closeOnBackdrop]="true"</code>; default behavior keeps modal dialogs open unless action buttons or Escape close them.</p>
+      <p class="dialog-note"><strong>Implementation note:</strong> if an app restyles the host <code>dialog[se]</code> as the full visual surface while keeping target-equality backdrop dismissal, clicks on host-hit areas near content edges can dismiss unexpectedly. Keep a dedicated inner surface boundary or adjust dismissal logic for host-only layouts.</p>
+
+      <dialog
+        se
+        [open]="dialogOpen()"
+        [ariaDescribedBy]="'dialog-demo-description'"
+        [ariaLabelledBy]="'dialog-demo-title'"
+        (closed)="handleDialogClosed($event)"
+        (openChange)="dialogOpen.set($event)"
+      >
+        <header data-dialog-header>
+          <h3 id="dialog-demo-title" data-dialog-title>Delete quarterly report?</h3>
+        </header>
+
+        <div data-dialog-body>
+          <p id="dialog-demo-description">This action removes the report and its reviewer notes from the current workspace. The action is reversible for 30 days from the audit log.</p>
+          <p>Use the frosted backdrop to keep the page context visible while making the confirmation step feel clearly detached from the rest of the screen.</p>
+        </div>
+
+        <form method="dialog" data-dialog-actions>
+          <button se value="cancel" intent="quiet">Cancel</button>
+          <button se value="delete" intent="danger" autofocus>Delete report</button>
+        </form>
+      </dialog>
+    </div>
+  </se-panel>
+</section>
+

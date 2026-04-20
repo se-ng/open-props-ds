@@ -61,6 +61,14 @@
     --surface-success: var(--green-12);
     --text-success: var(--green-3);
 
+    /* ── Dialog overlay tokens ───────────────────────────────────────────────────── */
+    --dialog-surface: var(--surface-1);
+    --dialog-border: var(--border-size-1) solid var(--stroke-default);
+    --dialog-shadow: var(--shadow-6);
+    --dialog-backdrop-color: color-mix(in oklab, var(--base-background) 48%, transparent);
+    --dialog-backdrop-blur: 18px;
+    --dialog-backdrop-saturate: 160%;
+
     /* ── Table accents ─────────────────────────────────────────────────── */
     --table-bg: var(--surface-2);
     --table-cell-bg: var(--surface-1);

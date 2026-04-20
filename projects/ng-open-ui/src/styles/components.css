@@ -6,4 +6,5 @@
  */
 @import '../lib/button/button.css' layer(components);
 @import '../lib/badge/badge.css' layer(components);
+@import '../lib/dialog/dialog.css' layer(components);
 @import '../lib/panel/panel.css' layer(components);

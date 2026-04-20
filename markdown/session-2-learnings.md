@@ -86,6 +86,23 @@ These are still intentionally conservative, but the baseline is no longer relyin
 
 ## Theme Review Outcomes
 
+### Dialog overlay tokens
+
+The first floating-layer primitive now has a small theme override contract instead of hardcoded overlay styling:
+
+- `--dialog-surface`
+- `--dialog-border`
+- `--dialog-shadow`
+- `--dialog-backdrop-color`
+- `--dialog-backdrop-blur`
+- `--dialog-backdrop-saturate`
+
+Reasoning:
+
+- dialog is a true floating layer, so shadow is allowed here even though in-flow components should avoid shadow-led elevation
+- backdrop treatment is part of theme authorship, not component-local taste
+- the backdrop should preserve context with a frosted-glass feel by default, while still being easy to tone down or warm up per scheme
+
 ### Light theme
 
 The original light theme felt too bright and high-glare. It was softened into a calmer "soft-light" variant by:
