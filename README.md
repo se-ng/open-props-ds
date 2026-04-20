@@ -35,6 +35,11 @@ ng build           # build all projects
 
 > All packages are pinned to exact versions (`save-exact=true`). Run `pnpm install` after any version change.
 
+## Live showcase
+
+- GitHub Pages: https://se-ng.github.io/open-props-ds/
+- Deployment is automated via GitHub Actions on every push to `main`.
+
 ## Repo structure (planned)
 
 ```text
